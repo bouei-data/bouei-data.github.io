@@ -302,7 +302,7 @@ h4.mini:first-child { margin-top: 0; }
       <div class="grid2">
         <div class="panel">
           <h3>契約方式ごとの金額</h3>
-          <p class="note">競争入札で決まるのは全体の数%。入札情報だけでは、お金の流れのほとんどが見えない。</p>
+          <p class="note" id="method-note"></p>
           <div class="chart" id="method-chart"></div>
         </div>
         <div class="panel">
@@ -377,7 +377,7 @@ h4.mini:first-child { margin-top: 0; }
           <thead><tr><th>会社</th><th>上場</th><th class="hide-sm">グループ</th><th class="r">中央調達 上位20社<br><span class="muted">3年合計</span></th><th class="r">追加した契約</th><th class="hide-sm">輸出・共同開発</th></tr></thead>
           <tbody></tbody>
         </table></div>
-        <p class="note" style="margin-top: var(--s3)">「追加した契約」は陸自補給本部（2026年6〜9月）と装備庁本庁（2026年8月）の公表分だけ。中央調達の全契約はまだ入っていない。グループ関係は社名から判断したもの。</p>
+        <p class="note" id="co-list-note" style="margin-top: var(--s3)"></p>
       </div>
     </section>
 
@@ -389,6 +389,7 @@ h4.mini:first-child { margin-top: 0; }
         <span class="public-only" id="co-listed"></span>
       </header>
       <dl class="co-meta" id="co-meta"></dl>
+      <p class="note" id="co-scope" style="margin-bottom: var(--s3)"></p>
       <div class="facts" id="co-facts-one"></div>
       <div class="panel" id="co-p-top20">
         <h3>中央調達の上位20社での順位</h3>
@@ -456,7 +457,7 @@ h4.mini:first-child { margin-top: 0; }
           <thead><tr><th>装備</th><th class="hide-sm">所属</th><th class="r">持っている数</th><th class="r">2026年度予算</th><th class="r hide-sm">2027年度要求</th><th class="r">契約</th><th class="hide-sm">主な会社</th></tr></thead>
           <tbody></tbody>
         </table></div>
-        <p class="note" style="margin-top: var(--s3)">持っている数は防衛白書2026（2026年3月末）。予算は契約ベースで、名前が出てくる事業を足したもの。契約は中央調達の主要契約と、陸自補給本部・装備庁本庁の公表分。</p>
+        <p class="note" style="margin-top: var(--s3)">持っている数は防衛白書2026（2026年3月末）。予算は、事業名にその装備の名前が出てくる事業（契約ベース）を足したもの。事業の金額がすべてその装備の取得に使われるとは限らず、生産能力の拡大や研究の費用を含むことがある。複数の装備にまたがる事業は各装備に出すので、装備どうしの予算は足し算できない。契約は中央調達の主要契約と、陸自補給本部・装備庁本庁の公表分。</p>
       </div>
     </section>
 
@@ -471,7 +472,7 @@ h4.mini:first-child { margin-top: 0; }
       <div class="facts" id="eq-facts-one"></div>
       <div class="panel" id="eq-p-budget">
         <h3>予算と要求</h3>
-        <p class="note">2026年度予算と2027年度概算要求のうち、この装備の名前が出てくる事業（契約ベース）。</p>
+        <p class="note">2026年度予算と2027年度概算要求のうち、事業名にこの装備の名前が出てくる事業（契約ベース）。事業の金額がすべてこの装備の取得に使われるとは限らない。「ほかの装備と共通」の事業は、金額をほかの装備と分けずにそのまま出している。</p>
         <div class="tablebox" style="margin-top: var(--s3)"><table id="eq-budget">
           <thead><tr><th>年度</th><th class="hide-sm">分野</th><th>事業</th><th class="r">金額</th></tr></thead>
           <tbody></tbody>
@@ -479,7 +480,7 @@ h4.mini:first-child { margin-top: 0; }
       </div>
       <div class="panel">
         <h3 id="eq-c-title">契約</h3>
-        <p class="note">中央調達は「主要な契約」として公表された分、ほかは陸自補給本部（2026年6〜9月）と装備庁本庁（2026年8月）の公表分。</p>
+        <p class="note" id="eq-c-note"></p>
         <div class="tablebox" style="margin-top: var(--s3)"><table id="eq-contracts">
           <thead><tr><th>日付</th><th>品目</th><th>相手</th><th class="r">金額</th></tr></thead>
           <tbody></tbody>
@@ -599,6 +600,9 @@ h4.mini:first-child { margin-top: 0; }
         </ul>
         <h3>誤りを見つけたら</h3>
         <p id="about-fb"></p>
+        <h3>訂正の記録</h3>
+        <ul id="about-corr"></ul>
+        <p class="note" id="about-hist"></p>
         <h3>使うときの注意</h3>
         <ul>
           <li>正確さには気を付けているが、誤りが含まれることがある。判断や記事に使うときは、必ず元の資料を確かめてほしい。</li>
@@ -656,6 +660,17 @@ h4.mini:first-child { margin-top: 0; }
   };
   const fyLabel = (fy) => (D.totals.find((t) => t.fy === fy) || {}).label || fy + '年度';
   const years = D.totals.map((t) => t.fy).sort();
+  const cxScope = () => {
+    const by = new Map();
+    for (const r of D.cx) {
+      const k = /補給本部/.test(r.office) ? '陸自補給本部' : /装備庁/.test(r.office) ? '装備庁本庁' : r.office, m = (r.date || '').slice(0, 7);
+      if (!m) continue;
+      const v = by.get(k) || [m, m]; if (m < v[0]) v[0] = m; if (m > v[1]) v[1] = m; by.set(k, v);
+    }
+    const y = (s) => +s.slice(0, 4), mo = (s) => +s.slice(5, 7);
+    const span = ([a, b]) => a === b ? `${y(a)}年${mo(a)}月` : (y(a) === y(b) ? `${y(a)}年${mo(a)}〜${mo(b)}月` : `${y(a)}年${mo(a)}月〜${y(b)}年${mo(b)}月`);
+    return [...by].map(([k, v]) => `${k}（${span(v)}）`).join('と');
+  };
   const latest = years[years.length - 1];
   const state = { fy: latest, itemsQ: '', coQ: '' };
   // 公開ページでは自動更新のファイル（ニュース・人事・契約）を後から読む。読み終わるまでは、まだ無い会社のページへ飛ばさない
@@ -668,6 +683,7 @@ h4.mini:first-child { margin-top: 0; }
     { key: 'open', label: '競争入札', test: (m) => m.includes('競争'), color: () => css('--signal') },
   ];
   const methodSum = (fy, mt) => D.by_method.filter((r) => r.fy === fy && mt.test(r.method)).reduce((s, r) => s + r.amount, 0);
+  const methodCases = (fy, mt) => D.by_method.filter((r) => r.fy === fy && mt.test(r.method)).reduce((s, r) => s + r.cases, 0);
   const totalOf = (fy) => (D.totals.find((t) => t.fy === fy) || {}).amount || 0;
   const top20Of = (fy) => D.top20.filter((r) => r.fy === fy).sort((a, b) => a.rank - b.rank);
   const coById = new Map(D.companies.map((c) => [c.id, c]));
@@ -763,12 +779,27 @@ h4.mini:first-child { margin-top: 0; }
     }
   };
 
-  // 誤りの指摘を受けるGoogleフォーム（空のあいだは「準備中」と出す）
+  // 誤りの報告先。Googleフォームができたら FEEDBACK_URL に入れる（空のあいだは GitHub で受け付ける）
   const FEEDBACK_URL = '';
+  const REPO = 'https://github.com/bouei-data/bouei-data.github.io';
+  const ISSUE_URL = REPO + '/issues/new?title=' + encodeURIComponent('【誤りの報告】');
+  // 訂正の記録（公開後に直したもの。新しいものを上に）
+  const CORRECTIONS = [
+    ['2026-11-03', '組織・人', '防衛大臣政務官のうち「兼 内閣府大臣政務官」を𠮷井章として載せていたが、正しくは上杉謙太郎だった。首相官邸の名簿に合わせて直した。', 'https://www.kantei.go.jp/jp/105/meibo/seimukan.html'],
+    ['2026-11-03', '契約', '「競争入札で決まるのは全体の数%」と書いていたが、件数の話か金額の話かが分からなかった。件数（2025年度は41%）と金額（7%）に分けて書いた。', ''],
+  ];
   const drawFeedback = () => {
-    const link = () => el('a', { href: FEEDBACK_URL }, '受付フォーム（Googleフォーム）');
-    $('#about-fb').replaceChildren(...(FEEDBACK_URL ? ['数字や名前の誤り、古くなった情報に気づいたら、', link(), 'から知らせてほしい。どのページの、どこが、どう違うかと、根拠の資料があれば書いてもらえると助かる。名前やメールアドレスは書かなくても送れる。'] : ['受付フォームを準備中。']));
-    $('#home-fb').replaceChildren(...(FEEDBACK_URL ? ['誤りに気づいたら', link(), 'から知らせてほしい。'] : []));
+    const gh = () => el('a', { href: ISSUE_URL }, 'GitHubの報告ページ');
+    const form = () => el('a', { href: FEEDBACK_URL }, '受付フォーム（Googleフォーム）');
+    $('#about-fb').replaceChildren(...(FEEDBACK_URL
+      ? ['数字や名前の誤り、古くなった情報に気づいたら、', form(), 'から知らせてほしい。名前やメールアドレスは書かなくても送れる。GitHubのアカウントがあれば、', gh(), 'からでもいい。']
+      : ['数字や名前の誤り、古くなった情報に気づいたら、', gh(), 'から知らせてほしい（GitHubのアカウントが要る。書いた内容は公開されるので、個人の情報は書かないで）。アカウントなしで送れるフォームも準備中。']),
+      ' どのページの、どこが、どう違うかと、根拠の資料があれば書いてもらえると助かる。直したものは、下の「訂正の記録」に残す。');
+    $('#about-corr').replaceChildren(...(CORRECTIONS.length
+      ? CORRECTIONS.map(([d, cat, what, src]) => el('li', {}, el('strong', {}, d), `（${cat}）`, what, src ? el('a', { href: src, style: 'margin-left:4px' }, '根拠') : null))
+      : [el('li', {}, 'まだない。')]));
+    $('#about-hist').replaceChildren('細かい更新もふくめた全部の変更は、', el('a', { href: REPO + '/commits/main' }, 'GitHubの更新履歴'), 'で見られる。');
+    $('#home-fb').replaceChildren('誤りに気づいたら', FEEDBACK_URL ? form() : gh(), 'から知らせてほしい。直したものは「このサイトについて」の訂正の記録に残す。');
   };
   const CATS = ['国のお金', '市場のお金', '契約', '企業', '装備', '技術・研究', '組織・人', '政策・法律', '輸出・国際協力', '周辺の動き', 'ニュースと分析'];
   const COVERAGE = [
@@ -937,9 +968,10 @@ h4.mini:first-child { margin-top: 0; }
     $('#contract-facts').replaceChildren(
       f('中央調達の総額', oku(total), prev ? `前年度比 ${pct(total - prev, prev) > 0 ? '+' : ''}${f1(pct(total - prev, prev))}%` : '前年度のデータなし'),
       f('契約件数', fmt(t.cases) + '件', '中央調達のみ'),
-      f('随意契約の割合', f1(pct(zuii, total)) + '%', '金額ベース。競争入札をせずに相手を決める'),
-      f('競争入札の割合', f1(pct(open, total)) + '%', '一般競争と指名競争の合計'),
+      f('随意契約の割合', f1(pct(zuii, total)) + '%', `金額ベース（件数では${f1(pct(methodCases(fy, METHODS[0]), t.cases))}%）。競争入札をせずに相手を決める`),
+      f('競争入札の割合', f1(pct(open, total)) + '%', `金額ベース（件数では${f1(pct(methodCases(fy, METHODS[2]), t.cases))}%）。一般競争と指名競争の合計`),
     );
+    $('#method-note').textContent = `${fyLabel(fy)}の中央調達では、競争入札は件数で${Math.round(pct(methodCases(fy, METHODS[2]), t.cases))}%あるのに、金額では${Math.round(pct(open, total))}%しかない。大きな契約のほとんどは随意契約か米国政府からの有償援助（FMS）で決まるので、入札情報だけではお金の流れの大半は見えない。分母は防衛装備庁の中央調達の全契約（${fmt(t.cases)}件・${oku(total)}）で、部隊などが各地で結ぶ契約は含まない。`;
   };
 
   const drawMethodChart = () => {
@@ -1100,6 +1132,7 @@ h4.mini:first-child { margin-top: 0; }
       .filter((c) => !q || `${c.name} ${c.full || ''} ${c.parent || ''} ${c.corp_no || ''} ${c.code || ''}`.normalize('NFKC').toLowerCase().includes(q))
       .sort((a, b) => (b.top20_total * 1e8 + b.cx_amount) - (a.top20_total * 1e8 + a.cx_amount));
     $('#co-count').textContent = `${rows.length}社`;
+    $('#co-list-note').textContent = `「追加した契約」は${cxScope()}の公表分だけで、中央調達の全契約はまだ入っていない。会社によって拾えている範囲が違うので、この表の数字で会社の規模を比べることはできない。グループ関係の根拠は、各社のページに書いている。`;
     $('#co-table tbody').replaceChildren(...rows.map((c) => el('tr', {},
       el('td', {}, el('a', { href: '#company-' + c.id }, c.name)),
       el('td', { class: c.listed === '上場' ? 'num' : 'muted', style: 'white-space:nowrap' }, listedText(c)),
@@ -1129,6 +1162,7 @@ h4.mini:first-child { margin-top: 0; }
     const t20 = D.top20.filter((r) => r.name === c.name);
     const f = (label, value, sub) => el('div', { class: 'fact' }, el('div', { class: 'fact-label' }, label), el('div', { class: 'fact-value' }, value), el('div', { class: 'fact-sub' }, sub));
     const kidAmt = kids.reduce((s, k) => s + k.cx_amount, 0), kidCnt = kids.reduce((s, k) => s + k.cx_count, 0);
+    $('#co-scope').textContent = `ここの数字は、次の公表資料から拾えた分だけ。この会社と防衛省の契約の総額ではない。①中央調達の上位20社（${years[0]}〜${years[years.length - 1]}年度）②中央調達の主要な契約 ③${cxScope()}の公表分。`;
     $('#co-facts-one').replaceChildren(...[
       f('中央調達 上位20社', t20.length ? oku(t20.reduce((s, r) => s + r.amount, 0)) : '圏外', t20.length ? `${years.length}年度のうち${t20.length}年度入り` : '上位20社に入ったことがない'),
       f('追加した契約', c.cx_count ? yen(c.cx_amount) : 'なし', c.cx_count ? `${c.cx_count}件（陸自補給本部・装備庁本庁）` : '今回の公表分にはなかった'),
@@ -1159,8 +1193,8 @@ h4.mini:first-child { margin-top: 0; }
       ...(kids.length ? [el('button', { type: 'button', 'aria-pressed': String(withKids), onclick: () => { state.coKids = !withKids; drawCompany(id); } }, 'グループ会社の分も')] : []),
     );
     const sum = rows.reduce((s, r) => s + (r.amount || 0), 0);
-    $('#co-c-title').textContent = `契約 ${rows.length}件・${yen(sum)}`;
-    $('#co-c-note').textContent = '中央調達は「主要な契約」として公表された分、ほかは陸自補給本部（2026年6〜9月）と装備庁本庁（2026年8月）の公表分。中央調達の全契約は取り込み待ち。';
+    $('#co-c-title').textContent = `見つかった契約 ${rows.length}件・${yen(sum)}`;
+    $('#co-c-note').textContent = `中央調達は「主要な契約」として公表された分、ほかは${cxScope()}の公表分。中央調達の全契約は取り込み待ちなので、この合計は会社の受注総額ではない。`;
     $('#co-contracts tbody').replaceChildren(...(rows.length ? rows.map((r) => el('tr', {},
       el('td', { class: 'num', style: 'white-space:nowrap' }, r.date),
       el('td', { class: 'hide-sm muted' }, r.office),
@@ -1266,15 +1300,18 @@ h4.mini:first-child { margin-top: 0; }
       f('2027年度要求', okuText(m.b27), e.b27.length ? `${e.b27.length}事業` : '名前の出てくる事業なし'),
       f('公表された契約', m.n ? yen(m.amt) : 'なし', m.n ? `${m.n}件` : '今ある公表分には出てこない'),
     );
+    const shared = (key, i) => EQ.filter((x) => x !== e && x[key].includes(i)).map((x) => x.name);
+    const shareChip = (key, i) => { const o = shared(key, i); return o.length ? el('span', { class: 'chip none', title: 'ほかに：' + o.join('、'), style: 'margin-left:6px' }, `ほかの装備と共通（${o.length}）`) : null; };
     $('#eq-p-budget').hidden = !(e.b26.length || e.b27.length);
     $('#eq-budget tbody').replaceChildren(
-      ...e.b26.map((i) => el('tr', {}, el('td', { style: 'white-space:nowrap' }, '2026年度予算'), el('td', { class: 'hide-sm muted' }, D.b26[i].area), el('td', {}, D.b26[i].item), el('td', { class: 'r' }, oku(D.b26[i].oku)))),
-      ...e.b27.map((i) => el('tr', {}, el('td', { style: 'white-space:nowrap' }, '2027年度要求'), el('td', { class: 'hide-sm muted' }, ''), el('td', {}, D.b27[i][0]), el('td', { class: 'r' }, D.b27[i][1] === null ? '事項要求' : oku(D.b27[i][1]) + (D.b27[i][2] ? '＋事項要求' : '')))),
+      ...e.b26.map((i) => el('tr', {}, el('td', { style: 'white-space:nowrap' }, '2026年度予算'), el('td', { class: 'hide-sm muted' }, D.b26[i].area), el('td', {}, D.b26[i].item, shareChip('b26', i)), el('td', { class: 'r' }, oku(D.b26[i].oku)))),
+      ...e.b27.map((i) => el('tr', {}, el('td', { style: 'white-space:nowrap' }, '2027年度要求'), el('td', { class: 'hide-sm muted' }, ''), el('td', {}, D.b27[i][0], shareChip('b27', i)), el('td', { class: 'r' }, D.b27[i][1] === null ? '事項要求' : oku(D.b27[i][1]) + (D.b27[i][2] ? '＋事項要求' : '')))),
     );
     const crow = [
       ...e.mi.map((i) => { const r = D.major_items[i]; const c = coByName.get(r.name); return { date: r.fy + '年度', item: `${r.item}（${r.qty}）`, who: c ? coNode(c.id) : r.name, amount: r.amount * 1e8, office: '中央調達' }; }),
       ...e.cx.map((i) => { const r = D.cx[i]; return { date: r.date, item: r.item, who: r.cid ? coNode(r.cid) : r.partner, amount: r.amount, office: r.office }; }),
     ].sort((a, b) => (b.amount || 0) - (a.amount || 0));
+    $('#eq-c-note').textContent = `中央調達は「主要な契約」として公表された分、ほかは${cxScope()}の公表分。装備の名前が品目に出てくる契約だけを拾っている。`;
     $('#eq-c-title').textContent = crow.length ? `契約 ${crow.length}件・${yen(m.amt)}` : '契約';
     $('#eq-contracts tbody').replaceChildren(...(crow.length ? crow.map((r) => el('tr', {},
       el('td', { style: 'white-space:nowrap' }, r.date, el('div', { class: 'muted', style: 'font-size:12px' }, r.office)),
@@ -1587,8 +1624,9 @@ h4.mini:first-child { margin-top: 0; }
     }
     const bm = D.by_method.filter((r) => r.fy === fy), bmt = bm.reduce((a, r) => a + r.amount, 0);
     const zui = bm.find((r) => r.method === '随意契約'), fms = bm.find((r) => /FMS/.test(r.method)), ip = bm.filter((r) => /競争/.test(r.method)).reduce((a, r) => a + r.amount, 0);
+    const bmc = bm.reduce((a, r) => a + r.cases, 0), ipc = bm.filter((r) => /競争/.test(r.method)).reduce((a, r) => a + r.cases, 0);
     if (zui && bmt) cards.push([`競争入札で決まるのは金額の${Math.round(pct(ip, bmt))}%`,
-      `${fyLabel(fy)}の中央調達では、随意契約が${Math.round(pct(zui.amount, bmt))}%、米国政府からの有償援助（FMS）が${fms ? Math.round(pct(fms.amount, bmt)) : 0}%。公開の入札情報だけを追っても、お金の流れの大半は見えない。`, '#contracts', '契約']);
+      `${fyLabel(fy)}の中央調達では、競争入札は件数だと${Math.round(pct(ipc, bmc))}%あるのに、金額では${Math.round(pct(ip, bmt))}%。金額では随意契約が${Math.round(pct(zui.amount, bmt))}%、米国政府からの有償援助（FMS）が${fms ? Math.round(pct(fms.amount, bmt)) : 0}%。公開の入札情報だけを追っても、お金の流れの大半は見えない。`, '#contracts', '契約']);
     const sc = DS('scramble'), yt = sc.yearly_total || [], l = yt[yt.length - 1], pv = yt[yt.length - 2], bc = (sc.by_country || []).find((r) => r.fy === (l || {}).fy);
     if (l && pv && bc) cards.push([`スクランブルの${Math.round(pct(bc.china, bc.total))}%が中国機`,
       `${l.fy}年度は${fmt(l.count)}回で前年度（${fmt(pv.count)}回）より${Math.round(pct(pv.count - l.count, pv.count))}%減った。それでも中国機への対応が${fmt(bc.china)}回、ロシア機が${fmt(bc.russia)}回。`, '#region', '周辺の動き']);
