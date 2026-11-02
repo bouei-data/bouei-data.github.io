@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02",
+ "updated": "2026-11-03",
  "note": "日本版DACISの「組織・人」の表そのもの。ページはこの items で表を置き換える。週1回の定期タスクが、公式の発令・名簿で交代を確かめて書き換え、log に記録する。公開情報のみ。手でサイトを作り直すときは、先にこのファイルを読んで people.json に反映すること。",
  "items": [
   {
@@ -52,20 +52,20 @@
    "src": "https://www.mod.go.jp/j/press/kisha/2026/0820b_r.html"
   },
   {
-   "post": "防衛大臣政務官",
+   "post": "防衛大臣政務官（兼 内閣府大臣政務官）",
    "name": "上杉謙太郎",
    "since": "2026-09-18",
    "group": "政治",
-   "status": "確認済（2026-09-18 副大臣・政務官人事の報道）",
-   "src": "https://www.asagumo-news.com/post/26091807"
+   "status": "確認済（首相官邸の政務官名簿で確認 2026-11-03。2026-09-18 就任）",
+   "src": "https://www.kantei.go.jp/jp/105/meibo/seimukan.html"
   },
   {
-   "post": "防衛大臣政務官（兼 内閣府大臣政務官）",
+   "post": "防衛大臣政務官",
    "name": "𠮷井章",
    "since": "2026-09-18",
    "group": "政治",
-   "status": "確認済（2026-09-18 報道、2026-10-30 防衛省の資産公開）",
-   "src": "https://j-defense.ikaros.jp/docs/mod/006221.html"
+   "status": "確認済（首相官邸の政務官名簿で確認 2026-11-03。2026-09-18 就任）",
+   "src": "https://www.kantei.go.jp/jp/105/meibo/seimukan.html"
   },
   {
    "post": "防衛大臣政務官（前任）",
