@@ -1,0 +1,14 @@
+{
+ "updated": "2026-11-02",
+ "note": "日本版DACISの契約ページ・企業ページ・装備ページに足される、自動で取り込んだ契約（陸自補給本部・防衛装備庁本庁の公表分）。sources_done は取り込み済みの公表ファイル（サイト本体に最初から入っている分を含む）。金額は円。個人事業者の氏名・住所は載せない。",
+ "sources_done": [
+  "https://www.mod.go.jp/gsdf/gmcc/raising/hoto/hzyo/hzyo080602.pdf",
+  "https://www.mod.go.jp/gsdf/gmcc/raising/hoto/hzyo/hzyo080701.pdf",
+  "https://www.mod.go.jp/gsdf/gmcc/raising/hoto/hzyo/hzyo080702.pdf",
+  "https://www.mod.go.jp/gsdf/gmcc/raising/hoto/hzyo/hzyo080801.pdf",
+  "https://www.mod.go.jp/gsdf/gmcc/raising/hoto/hzyo/hzyo080802.pdf",
+  "https://www.mod.go.jp/gsdf/gmcc/raising/hoto/hzyo/hzyo080902.pdf",
+  "https://www.mod.go.jp/atla/data/info/ny_honbu/pdf_ichiran/r08/08-ekimu-zuikei-h-08.pdf"
+ ],
+ "rows": []
+}

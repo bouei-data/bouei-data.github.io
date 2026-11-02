@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bouei-data.github.io/defense-data/sitemap.xml

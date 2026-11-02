@@ -1,0 +1,302 @@
+{
+ "updated": "2026-11-02",
+ "note": "日本版DACISの「組織・人」の表そのもの。ページはこの items で表を置き換える。週1回の定期タスクが、公式の発令・名簿で交代を確かめて書き換え、log に記録する。公開情報のみ。手でサイトを作り直すときは、先にこのファイルを読んで people.json に反映すること。",
+ "items": [
+  {
+   "post": "内閣総理大臣",
+   "name": "高市早苗",
+   "since": "2025-10-21",
+   "group": "政治",
+   "status": "確認済（2026-09-17 第2次改造内閣で続投）",
+   "src": "https://kumanichi.com/articles/2036885"
+  },
+  {
+   "post": "内閣官房長官",
+   "name": "木原稔",
+   "since": "",
+   "group": "政治",
+   "status": "確認済（2026-09-17 改造で留任）",
+   "src": "https://kumanichi.com/articles/2036885"
+  },
+  {
+   "post": "防衛大臣",
+   "name": "小泉進次郎",
+   "since": "2025-10-21",
+   "group": "政治",
+   "status": "確認済（2026-09-17 改造で留任）",
+   "src": "https://www.mod.go.jp/j/profile/minister/index.html"
+  },
+  {
+   "post": "防衛副大臣",
+   "name": "小田原潔",
+   "since": "2026-09-18",
+   "group": "政治",
+   "status": "確認済（首相官邸 副大臣名簿。2026-07-03 施行の改正防衛省設置法で副大臣は2人制に）",
+   "src": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html"
+  },
+  {
+   "post": "防衛副大臣（兼 内閣府副大臣）",
+   "name": "小鑓隆史（こやり隆史）",
+   "since": "2026-09-18",
+   "group": "政治",
+   "status": "確認済（首相官邸 副大臣名簿。2026-10-12 臨時会見にも出席）",
+   "src": "https://www.kantei.go.jp/jp/105/meibo/fukudaijin.html"
+  },
+  {
+   "post": "防衛副大臣（前任）",
+   "name": "宮﨑政久",
+   "since": "2025-10",
+   "until": "2026-09",
+   "group": "政治",
+   "status": "確認済（2026-08-20 会見時点で在任、2026-09 改造で交代）",
+   "src": "https://www.mod.go.jp/j/press/kisha/2026/0820b_r.html"
+  },
+  {
+   "post": "防衛大臣政務官",
+   "name": "上杉謙太郎",
+   "since": "2026-09-18",
+   "group": "政治",
+   "status": "確認済（2026-09-18 副大臣・政務官人事の報道）",
+   "src": "https://www.asagumo-news.com/post/26091807"
+  },
+  {
+   "post": "防衛大臣政務官（兼 内閣府大臣政務官）",
+   "name": "𠮷井章",
+   "since": "2026-09-18",
+   "group": "政治",
+   "status": "確認済（2026-09-18 報道、2026-10-30 防衛省の資産公開）",
+   "src": "https://j-defense.ikaros.jp/docs/mod/006221.html"
+  },
+  {
+   "post": "防衛大臣政務官（前任）",
+   "name": "若林洋平・吉田真次",
+   "since": "2025-10",
+   "until": "2026-09",
+   "group": "政治",
+   "status": "確認済（2026-09 改造で交代）",
+   "src": "https://www.mod.go.jp/j/profile/minister/index.html"
+  },
+  {
+   "post": "防衛事務次官",
+   "name": "大和太郎",
+   "since": "2025-08-01",
+   "group": "事務方",
+   "status": "確認済（前職 防衛政策局長）",
+   "src": "https://www.mod.go.jp/j/press/jinji/2025/0715a.pdf"
+  },
+  {
+   "post": "大臣官房長",
+   "name": "小野功雄",
+   "since": "2025-08-01",
+   "group": "事務方",
+   "status": "確認済（2026-07-01 名簿）",
+   "src": "https://www.mod.go.jp/j/profile/mod_sdf/sosikizu/inner/kanbumeibo.html"
+  },
+  {
+   "post": "防衛政策局長",
+   "name": "萬浪学",
+   "since": "2025-08-01",
+   "group": "事務方",
+   "status": "2025-08 就任。2026年8月の局長級異動（7/31発表）の発令に含まれず、継続とみられる",
+   "src": "https://www.mod.go.jp/j/press/jinji/2025/0715a.pdf"
+  },
+  {
+   "post": "整備計画局長",
+   "name": "伊藤晋哉",
+   "since": "2025-08-01",
+   "group": "事務方",
+   "status": "確認済（2026-07-01 名簿。8月の局長級異動の発令に含まれず）",
+   "src": "https://www.mod.go.jp/j/profile/mod_sdf/sosikizu/inner/kanbumeibo.html"
+  },
+  {
+   "post": "防衛審議官",
+   "name": "安藤敦史",
+   "since": "2026-08-07",
+   "group": "事務方",
+   "status": "確認済（日刊工業新聞 2026-08-05、防衛省お知らせ 2026-09-04「安藤防衛審議官の海外出張」）。内閣官房から採用。前任 加野幸司は退職",
+   "src": "https://www.mod.go.jp/j/press/news/2026/09/04a.pdf"
+  },
+  {
+   "post": "人事教育局長",
+   "name": "上田幸司",
+   "since": "2026-08-07",
+   "group": "事務方",
+   "status": "確認済（防衛省内部部局幹部名簿 2026-09-17現在、日経 2026-07-31。前職 統合幕僚監部総括官。前任 廣瀨律子は退職）",
+   "src": "https://www.mod.go.jp/j/profile/mod_sdf/sosikizu/inner/kanbumeibo.html"
+  },
+  {
+   "post": "地方協力局長",
+   "name": "伊藤哲也",
+   "since": "2026-08-07",
+   "group": "事務方",
+   "status": "確認済（防衛省内部部局幹部名簿 2026-09-17現在、日経 2026-07-31。前職 大臣官房審議官（併）統合作戦司令部司令官補佐官。前任 森田治男は退職）",
+   "src": "https://www.mod.go.jp/j/profile/mod_sdf/sosikizu/inner/kanbumeibo.html"
+  },
+  {
+   "post": "防衛装備庁長官",
+   "name": "今給黎学",
+   "since": "2026-08-07",
+   "group": "防衛装備庁",
+   "status": "確認済（装備庁幹部名簿 R8.8.17現在。前職 防衛研究所長。前任 青柳肇は退職）",
+   "src": "https://www.mod.go.jp/atla/soshiki/kanbulist_r080817.pdf"
+  },
+  {
+   "post": "防衛装備庁 防衛技監",
+   "name": "片山泰介",
+   "group": "防衛装備庁",
+   "status": "確認済（装備庁幹部名簿 R8.8.17現在）",
+   "src": "https://www.mod.go.jp/atla/soshiki/kanbulist_r080817.pdf"
+  },
+  {
+   "post": "防衛装備庁 装備政策部長",
+   "name": "藤重敦彦",
+   "group": "防衛装備庁",
+   "status": "確認済（装備庁幹部名簿 R8.8.17現在）",
+   "src": "https://www.mod.go.jp/atla/soshiki/kanbulist_r080817.pdf"
+  },
+  {
+   "post": "防衛装備庁 技術戦略部長",
+   "name": "南亜樹",
+   "group": "防衛装備庁",
+   "status": "確認済（装備庁幹部名簿 R8.8.17現在）",
+   "src": "https://www.mod.go.jp/atla/soshiki/kanbulist_r080817.pdf"
+  },
+  {
+   "post": "防衛装備庁 プロジェクト管理部長",
+   "name": "宮本康宏",
+   "since": "2026-08-07",
+   "group": "防衛装備庁",
+   "status": "確認済（前職 統合幕僚監部首席参事官）",
+   "src": "https://www.mod.go.jp/j/press/jinji/2026/0807a.pdf"
+  },
+  {
+   "post": "防衛装備庁 調達管理部長",
+   "name": "鈴木信丈",
+   "since": "2026-08-07",
+   "group": "防衛装備庁",
+   "status": "確認済（前職 調達事業部長）",
+   "src": "https://www.mod.go.jp/j/press/jinji/2026/0807a.pdf"
+  },
+  {
+   "post": "防衛装備庁 防衛イノベーション科学技術研究所長",
+   "name": "嶺康晴",
+   "since": "2026-08-07",
+   "group": "防衛装備庁",
+   "status": "確認済（前職 技術戦略部長）",
+   "src": "https://www.mod.go.jp/atla/soshiki/haturei_r080807.pdf"
+  },
+  {
+   "post": "防衛装備庁 陸上装備研究所長",
+   "name": "安藤智啓",
+   "since": "2026-08-07",
+   "group": "防衛装備庁",
+   "status": "確認済",
+   "src": "https://www.mod.go.jp/atla/soshiki/haturei_r080807.pdf"
+  },
+  {
+   "post": "防衛装備庁 艦艇装備研究所長",
+   "name": "萩原祐史",
+   "since": "2026-08-07",
+   "group": "防衛装備庁",
+   "status": "確認済",
+   "src": "https://www.mod.go.jp/atla/soshiki/haturei_r080807.pdf"
+  },
+  {
+   "post": "統合幕僚長",
+   "name": "内倉浩昭（空将）",
+   "since": "2025-08-01",
+   "group": "制服組",
+   "status": "2025-08 就任。2026年8月の将人事（7/17発表）でも交代なし",
+   "src": "https://www.mod.go.jp/j/press/jinji/2026/0717a.pdf"
+  },
+  {
+   "post": "陸上幕僚長",
+   "name": "荒井正芳（陸将）",
+   "since": "2025-08-01",
+   "group": "制服組",
+   "status": "2025-08 就任。2026年8月の将人事（7/17発表）でも交代なし",
+   "src": "https://www.mod.go.jp/j/press/jinji/2026/0717a.pdf"
+  },
+  {
+   "post": "海上幕僚長",
+   "name": "齋藤聡（海将）",
+   "since": "2024-07-19",
+   "group": "制服組",
+   "status": "2026年5月の日比防衛相会談に陪席（報道）。2026年8月の将人事でも交代の発令なし",
+   "src": "https://www.mod.go.jp/msdf/about/topmessage/profile.html"
+  },
+  {
+   "post": "航空幕僚長",
+   "name": "森田雄博（空将）",
+   "since": "2025-08-01",
+   "group": "制服組",
+   "status": "2025-08 就任。2026年8月の将人事（7/17発表）でも交代なし",
+   "src": "https://www.mod.go.jp/j/press/jinji/2026/0717a.pdf"
+  },
+  {
+   "post": "統合作戦司令官",
+   "name": "俵千城（海将）",
+   "since": "2026-03-23",
+   "group": "制服組",
+   "status": "確認済（統合作戦司令部の着任挨拶。初代は南雲憲一郎空将）",
+   "src": "https://www.mod.go.jp/jjoc/about/message.html"
+  },
+  {
+   "post": "統合幕僚副長",
+   "name": "白川訓通（陸将）",
+   "since": "2026-08-03",
+   "group": "制服組",
+   "status": "確認済（2026-07-17 発表の将人事）",
+   "src": "https://www.mod.go.jp/j/press/jinji/2026/0717c.pdf"
+  },
+  {
+   "post": "陸上総隊司令官",
+   "name": "遠藤充（陸将）",
+   "since": "2026-08-03",
+   "group": "制服組",
+   "status": "確認済（前職 中部方面総監。前任 小林弘樹は退職）",
+   "src": "https://www.mod.go.jp/j/press/jinji/2026/0717a.pdf"
+  },
+  {
+   "post": "中部方面総監",
+   "name": "松永浩二（陸将）",
+   "since": "2026-08-03",
+   "group": "制服組",
+   "status": "確認済（前職 統合幕僚副長）",
+   "src": "https://www.mod.go.jp/j/press/jinji/2026/0717a.pdf"
+  },
+  {
+   "post": "水上艦隊司令官",
+   "name": "池内出（海将）",
+   "since": "2026-08-03",
+   "group": "制服組",
+   "status": "確認済（前任 伍賀祥裕は呉地方総監へ）",
+   "src": "https://www.mod.go.jp/j/press/jinji/2026/0717c.pdf"
+  },
+  {
+   "post": "潜水艦隊司令官",
+   "name": "星直也（海将）",
+   "since": "2026-08-03",
+   "group": "制服組",
+   "status": "確認済",
+   "src": "https://www.mod.go.jp/j/press/jinji/2026/0717c.pdf"
+  },
+  {
+   "post": "呉地方総監",
+   "name": "伍賀祥裕（海将）",
+   "since": "2026-08-03",
+   "group": "制服組",
+   "status": "確認済（前職 水上艦隊司令官）",
+   "src": "https://www.mod.go.jp/j/press/jinji/2026/0717a.pdf"
+  },
+  {
+   "post": "航空支援集団司令官",
+   "name": "船倉慶太（空将）",
+   "since": "2026-08-03",
+   "group": "制服組",
+   "status": "確認済（前職 北部航空方面隊司令官）",
+   "src": "https://www.mod.go.jp/j/press/jinji/2026/0717a.pdf"
+  }
+ ],
+ "log": []
+}

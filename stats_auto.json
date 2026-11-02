@@ -1,0 +1,15 @@
+{
+ "updated": "2026-11-02",
+ "note": "日本版DACISの数字を自動で新しくするための記録。月1回の定期タスクが、公式の発表から下の kind ごとの形で facts に足す。ページは kind ごとに決まった場所へ反映する。公開情報のみ、すべて出典つき。",
+ "kinds": {
+  "scramble": "空自の緊急発進。{kind, fy(年度), period('2026年度上半期'など), full_year(true/false), count, china, russia, other, date(公表日), src}",
+  "senkaku": "尖閣周辺の中国海警船。{kind, year, month(年の合計なら無し), full_year, contiguous_days, territorial_days, date, src}",
+  "nk_count": "北朝鮮の弾道ミサイル。{kind, year, launches(回), missiles(発以上), as_of(YYYY-MM-DD), note, date, src}",
+  "budget": "防衛予算の節目。{kind, fy, stage('概算要求'/'政府案'/'成立'/'補正予算案'/'補正成立'), total_oku(億円), note, date, src}",
+  "procurement_annual": "中央調達の年度実績。{kind, fy, label, cases, amount(億円), top:[{rank,name,amount(億円),items}], date, src}",
+  "result": "企業の決算の防衛事業の数字。{kind, company(サイトの社名), corp_no, metric, fy, oku(億円), yoy, note, date, src}",
+  "export": "輸出・国際協力の案件の進展。{kind, partner(国), item(案件), type, what, date, src}",
+  "funding": "安全保障技術研究推進制度。{kind, fy, applied, adopted, budget_oku, date, src}"
+ },
+ "facts": []
+}
