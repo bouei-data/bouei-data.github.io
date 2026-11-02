@@ -2,7 +2,7 @@
 
 日本の防衛と防衛産業について、予算・契約・企業・装備・人事・政策・輸出・周辺国の動きを、公開資料と出典でつないだ非公式のまとめサイト。個人が運営している。
 
-公開ページ: https://bouei-data.github.io/defense-data/
+公開ページ: https://bouei-data.github.io/
 
 ## ファイル
 
